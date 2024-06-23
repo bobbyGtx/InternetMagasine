@@ -1,0 +1,120 @@
+<header class="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="/assets/images/logo.png" alt="Logo">
+    </a>
+    <div class="header-content">
+      <div class="header-top">
+        <div class="header-top-menu">
+          <nav>
+            <ul>
+              <li><a routerLink="/">Главная</a></li>
+              <li><a routerLink="/catalog">Каталог</a></li>
+              <li><a routerLink="/" fragment="reviews">Отзывы</a></li>
+              <li><a routerLink="/" fragment="delivery">Доставка и оплата</a></li>
+            </ul>
+          </nav>
+        </div>
+        <a href="tel:+375299182888" class="header-top-phone">+ 375 (29) 918-28-88</a>
+        <div class="header-top-actions">
+          <a routerLink="/login" *ngIf="!isLoggedIn">
+            <svg width="23.000000" height="23.000000" viewBox="0 0 23 23" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path id="Vector"
+                    d="M8.52 7.24C8.82 3.79 10.59 2.38 14.48 2.38L14.6 2.38C18.88 2.38 20.6 4.1 20.6 8.38L20.6 14.63C20.6 18.91 18.88 20.63 14.6 20.63L14.48 20.63C10.62 20.63 8.85 19.24 8.53 15.85"
+                    stroke="#202B21" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round"
+                    stroke-linecap="round"/>
+              <path id="Vector" d="M1.91 11.5L14.26 11.5" stroke="#202B21" stroke-opacity="1.000000"
+                    stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+              <path id="Vector" d="M12.12 8.28L15.33 11.5L12.12 14.71" stroke="#202B21" stroke-opacity="1.000000"
+                    stroke-width="1.500000" stroke-linejoin="round" stroke-linecap="round"/>
+              <g opacity="0.000000"/>
+            </svg>
+          </a>
+          <a *ngIf="isLoggedIn" [matMenuTriggerFor]="menu">
+            <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path id="Vector"
+                    d="M11.88 12.77C10.12 12.72 8.72 11.27 8.72 9.5C8.72 7.7 10.18 6.22 12 6.22C13.81 6.22 15.28 7.7 15.28 9.5C15.27 11.27 13.88 12.72 12.12 12.77C12.05 12.77 11.96 12.77 11.88 12.77Z"
+                    stroke="#202B21" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round"/>
+              <path id="Vector"
+                    d="M12 22C9.4 22 7.03 21.01 5.25 19.37C5.35 18.43 5.95 17.52 7.02 16.8C9.76 14.98 14.25 14.98 16.97 16.8C18.03 17.52 18.64 18.43 18.74 19.37C16.95 21.01 14.59 22 12 22Z"
+                    stroke="#202B21" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round"/>
+              <path id="Vector"
+                    d="M12 22C6.47 22 2 17.52 2 12C2 6.47 6.47 2 12 2C17.52 2 22 6.47 22 12C22 17.52 17.52 22 12 22Z"
+                    stroke="#202B21" stroke-opacity="1.000000" stroke-width="1.500000" stroke-linejoin="round"/>
+              <g opacity="0.000000"/>
+            </svg>
+          </a>
+          <a routerLink="/favorite" *ngIf="isLoggedIn">
+            <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <rect id="heart" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
+              <path id="Vector"
+                    d="M12 20.84C11.71 20.84 11.44 20.8 11.21 20.72C7.7 19.52 2.14 15.26 2.14 8.96C2.14 5.75 4.73 3.15 7.92 3.15C9.47 3.15 10.92 3.75 12 4.84C13.07 3.75 14.52 3.15 16.06 3.15C19.25 3.15 21.85 5.76 21.85 8.96C21.85 15.27 16.29 19.52 12.78 20.72C12.55 20.8 12.28 20.84 12 20.84ZM7.92 4.52C5.5 4.52 3.52 6.51 3.52 8.96C3.52 15.22 9.54 18.7 11.66 19.43C11.82 19.48 12.18 19.48 12.34 19.43C14.45 18.7 20.48 15.23 20.48 8.96C20.48 6.51 18.5 4.52 16.07 4.52C14.68 4.52 13.39 5.18 12.55 6.3C12.3 6.65 11.71 6.65 11.45 6.3C10.6 5.17 9.32 4.52 7.92 4.52Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <g opacity="0.000000"/>
+            </svg>
+          </a>
+          <a routerLink="/cart">
+            <svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <rect id="bag" width="24.000000" height="24.000000" fill="#FFFFFF" fill-opacity="0"/>
+              <path id="Vector"
+                    d="M6.32 7.31C6.16 7.31 6 7.25 5.88 7.13C5.64 6.89 5.64 6.49 5.88 6.25L8.9 3.22C9.15 2.98 9.54 2.98 9.79 3.22C10.03 3.46 10.03 3.86 9.79 4.1L6.76 7.13C6.64 7.25 6.48 7.31 6.32 7.31Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <path id="Vector"
+                    d="M17.67 7.31C17.51 7.31 17.35 7.25 17.23 7.13L14.2 4.1C13.96 3.86 13.96 3.46 14.2 3.22C14.45 2.98 14.85 2.98 15.09 3.22L18.11 6.25C18.35 6.49 18.35 6.89 18.11 7.13C18 7.25 17.83 7.31 17.67 7.31Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <path id="Vector"
+                    d="M18.84 10.83C18.78 10.83 18.72 10.83 18.66 10.83L18.47 10.83L5.33 10.83C4.75 10.84 4.08 10.84 3.6 10.35C3.21 9.98 3.04 9.39 3.04 8.54C3.04 6.25 4.71 6.25 5.51 6.25L18.48 6.25C19.28 6.25 20.95 6.25 20.95 8.54C20.95 9.4 20.78 9.98 20.4 10.35C19.96 10.79 19.38 10.83 18.84 10.83ZM5.51 9.58L18.67 9.58C19.05 9.59 19.4 9.59 19.51 9.47C19.57 9.41 19.7 9.21 19.7 8.54C19.7 7.6 19.46 7.5 18.47 7.5L5.51 7.5C4.52 7.5 4.29 7.6 4.29 8.54C4.29 9.21 4.42 9.41 4.47 9.47C4.59 9.58 4.95 9.58 5.31 9.58L5.51 9.58Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <path id="Vector"
+                    d="M10.13 17.25C9.79 17.25 9.5 16.96 9.5 16.62L9.5 13.66C9.5 13.32 9.79 13.04 10.13 13.04C10.47 13.04 10.75 13.32 10.75 13.66L10.75 16.62C10.75 16.97 10.47 17.25 10.13 17.25Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <path id="Vector"
+                    d="M13.96 17.25C13.62 17.25 13.34 16.96 13.34 16.62L13.34 13.66C13.34 13.32 13.62 13.04 13.96 13.04C14.3 13.04 14.59 13.32 14.59 13.66L14.59 16.62C14.59 16.97 14.3 17.25 13.96 17.25Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <path id="Vector"
+                    d="M14.4 20.95L9.38 20.95C6.4 20.95 5.73 19.18 5.47 17.64L4.29 10.43C4.24 10.09 4.47 9.77 4.81 9.71C5.15 9.65 5.47 9.89 5.53 10.23L6.7 17.43C6.95 18.9 7.45 19.7 9.38 19.7L14.4 19.7C16.54 19.7 16.79 18.95 17.06 17.5L18.46 10.21C18.53 9.87 18.85 9.64 19.2 9.72C19.54 9.79 19.75 10.11 19.69 10.45L18.29 17.75C17.96 19.44 17.42 20.95 14.4 20.95Z"
+                    fill="#202B21" fill-opacity="1.000000" fill-rule="nonzero"/>
+              <g opacity="0.000000"/>
+            </svg>
+            <span *ngIf="count">{{ count }}</span>
+          </a>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <a routerLink="/profile">Профиль</a>
+            </button>
+            <button mat-menu-item>
+              <span (click)="logout()">Выйти</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <div class="header-bottom">
+        <div class="header-bottom-menu">
+          <nav>
+            <ul>
+              <li *ngFor="let category of categories">
+                <a routerLink="/catalog" [queryParams]="{types: category?.typesUrl }">{{ category.name }}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-bottom-search">
+          <!--Для input after работает не корректно, сделаем для дива-->
+          <input type="text" placeholder="Начните искать" [formControl]="searchField"><!-- [ngModel]="searchValue" (ngModelChange)="changedSearchValue($event)" (blur)="changeShowedSearch(false)" (focus)="changeShowedSearch(true)"-->
+          <div class="search-products" *ngIf="showedSearch && products && products.length>0">
+            <div class="search-product" *ngFor="let product of products" (click)="selectProduct(product.url)">
+              <div class="search-product-image"
+                   style="background-image: url({{serverStaticPath + product.image}})"></div>
+              <div class="search-product-name">{{ product.name }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

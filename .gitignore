@@ -1,0 +1,12 @@
+# Node
+/frontend/node_modules
+/frontend/.angular/cache
+/backend/node_modules
+
+.idea/
+/frontend/.idea/
+/backend/.idea/
+
+
+
+
