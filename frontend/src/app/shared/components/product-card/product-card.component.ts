@@ -34,9 +34,11 @@ export class ProductCardComponent implements OnInit {
     if (this.countInCart && this.countInCart>1){
       this.count=this.countInCart;
     }
+    this.isLoggedIn=this.authService.getIsLoggedIn();
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLoggedIn = isLoggedIn;
     });
+
   }
 
   updateCount(value:number){

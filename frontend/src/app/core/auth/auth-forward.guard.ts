@@ -14,7 +14,6 @@ export class AuthForwardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authService.getIsLoggedIn()){
-
       this.location.back();//Переводим на предыдущую страницу если пользователь залогинен
       return false;
     }

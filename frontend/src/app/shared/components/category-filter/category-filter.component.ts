@@ -31,13 +31,14 @@ export class CategoryFilterComponent implements OnInit {
     }
   }
 
-
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.queryParams.subscribe(params => {
-      this.activeParams =ActiveParamsUtil.processParams(params);
+
+      this.activeParams = ActiveParamsUtil.processParams(params);
 
       if (this.type) { //Проверяем какой тип компонента, и в зависимости от этого вносим данные в элемент для отображения. Если мы загружаем страницу по ссылке с QueryParams
         if (this.type === "height") {
@@ -45,22 +46,40 @@ export class CategoryFilterComponent implements OnInit {
           this.from = this.activeParams.heightFrom ? +this.activeParams.heightFrom : null;
           this.to = this.activeParams.heightTo ? +this.activeParams.heightTo : null;
         }//Если компонент с шириной - то заполняем его и открываем если есть что-то
+
         if (this.type === "diameter") {
           this.open = (this.activeParams.diameterFrom || this.activeParams.diameterTo) ? true : this.open; //Если любой из параметров есть - то окрываем окно
           this.from = this.activeParams.diameterFrom ? +this.activeParams.diameterFrom : null;
           this.to = this.activeParams.diameterTo ? +this.activeParams.diameterTo : null;
         }//Если компонент с диаметром - то заполняем его и открываем если есть что-то
       } else { //Если тип не установлен - то мы работаем с категориями
-        this.activeParams.types = Array.isArray(params['types']) ? params['types'] : [params['types']];//Присваиваем в массив те типы которые есть в url в виде массива
+
+        //this.activeParams.types = Array.isArray(params['types']) ? params['types'] : [params['types']];//Присваиваем в массив те типы которые есть в url в виде массива
         //В HTML -> [checked]="activeParams.types.includes(type.url)" Если есть в массиве type.url присвоенный элементу - то он выбирается
+        if (Array.isArray(params['types'])){
+          this.activeParams.types=params['types'];
+        }else{
+          this.activeParams.types=[params['types']];
+          console.log('проблема тут');
+        }
+
+        if (this.activeParams.types.length === 1) {
+          if (this.activeParams.types.findIndex(item => item === 'undefined')) {
+            this.activeParams.types = [];
+          }//я просто чищу массив если он становится глюченным
+        }//Тут я обошел баг! Причину я не понял. Почему-то всегда после 3-го экземпляра фильтра включительно в массив присваивается undefined
+
+
+
         if (this.categoryWithTypes && this.categoryWithTypes.types && this.categoryWithTypes.types.length > 0) {
           //some - проходимся по каждому элементу массива (по чекбоксу), если хотябы 1 ретурн будет true - функция останавливается.
-          if (this.categoryWithTypes.types.some(cattype => this.activeParams.types.find(item => cattype.url === item))){//Сравниваем 2 массива. Если есть хоть 1 тип из этого компоненты в url - то разварачиваем компонент
-          this.open = true;
+          if (this.categoryWithTypes.types.some(cattype => this.activeParams.types.find(item => cattype.url === item))) {//Сравниваем 2 массива. Если есть хоть 1 тип из этого компоненты в url - то разварачиваем компонент
+            this.open = true;
           }
         }
       }
     });
+
   }
 
   toggle(): void {
@@ -79,8 +98,7 @@ export class CategoryFilterComponent implements OnInit {
     } else if (checked) {
       this.activeParams.types = [url];
     }
-
-    this.activeParams.page=1;//Сброс пагинации при изменении фильтра
+    this.activeParams.page = 1;//Сброс пагинации при изменении фильтра
     this.router.navigate(['/catalog'], {
       queryParams: this.activeParams
     });
@@ -93,7 +111,7 @@ export class CategoryFilterComponent implements OnInit {
       } else {
         this.activeParams[param] = value;
       }
-      this.activeParams.page=1;//Сброс пагинации при изменении фильтра
+      this.activeParams.page = 1;//Сброс пагинации при изменении фильтра
       this.router.navigate(['/catalog'], {
         queryParams: this.activeParams
       });

@@ -16,7 +16,6 @@ export class CartService {
   setCount(count:number):void{
     this.count=count;
     this.count$.next(count);
-    console.log(count);
   }
 
   getCart():Observable<CartType|DefaultResponseType>{

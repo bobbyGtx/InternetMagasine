@@ -141,6 +141,7 @@ export class CatalogComponent implements OnInit {
                 }
               }
             });//Считываем параметры типов и заносим в переменную
+
             //Далее обрабатываем параметры диаметра и высоты
             if (this.activeParams.heightFrom) {
               this.appliedFilters.push({

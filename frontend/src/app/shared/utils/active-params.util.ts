@@ -4,6 +4,7 @@ import {ActiveParamsType} from "../../../types/active-params.type";
 export class ActiveParamsUtil {
   static processParams(params:Params):ActiveParamsType{
     const activeParams: ActiveParamsType = {types: []};
+
     if (params.hasOwnProperty('types')) {
       //Если параметр только один - то он передается как строка. Поэтому нам нужно переделать его в массив
       activeParams.types = Array.isArray(params['types']) ? params['types'] : [params['types']];

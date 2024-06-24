@@ -57,6 +57,7 @@ export class DetailComponent implements OnInit {
               private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn=this.authService.getIsLoggedIn();
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLoggedIn = isLoggedIn;
     });

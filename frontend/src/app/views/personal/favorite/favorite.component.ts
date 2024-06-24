@@ -5,7 +5,6 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 import {environment} from "../../../../environments/environment";
 import {CartService} from "../../../shared/services/cart.service";
 import {CartType} from "../../../../types/cart.type";
-import {ProductType} from "../../../../types/product.type";
 
 @Component({
   selector: 'app-favorite',
