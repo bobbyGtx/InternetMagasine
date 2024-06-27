@@ -54,23 +54,10 @@ export class CategoryFilterComponent implements OnInit {
         }//Если компонент с диаметром - то заполняем его и открываем если есть что-то
       } else { //Если тип не установлен - то мы работаем с категориями
 
-        //this.activeParams.types = Array.isArray(params['types']) ? params['types'] : [params['types']];//Присваиваем в массив те типы которые есть в url в виде массива
-        //В HTML -> [checked]="activeParams.types.includes(type.url)" Если есть в массиве type.url присвоенный элементу - то он выбирается
-        if (Array.isArray(params['types'])){
-          this.activeParams.types=params['types'];
-        }else{
-          this.activeParams.types=[params['types']];
-          console.log('проблема тут');
+        if (params['types']){
+          this.activeParams.types = Array.isArray(params['types']) ? params['types'] : [params['types']];//Присваиваем в массив те типы которые есть в url в виде массива
         }
-
-        if (this.activeParams.types.length === 1) {
-          if (this.activeParams.types.findIndex(item => item === 'undefined')) {
-            this.activeParams.types = [];
-          }//я просто чищу массив если он становится глюченным
-        }//Тут я обошел баг! Причину я не понял. Почему-то всегда после 3-го экземпляра фильтра включительно в массив присваивается undefined
-
-
-
+        //В HTML -> [checked]="activeParams.types.includes(type.url)" Если есть в массиве type.url присвоенный элементу - то он выбирается
         if (this.categoryWithTypes && this.categoryWithTypes.types && this.categoryWithTypes.types.length > 0) {
           //some - проходимся по каждому элементу массива (по чекбоксу), если хотябы 1 ретурн будет true - функция останавливается.
           if (this.categoryWithTypes.types.some(cattype => this.activeParams.types.find(item => cattype.url === item))) {//Сравниваем 2 массива. Если есть хоть 1 тип из этого компоненты в url - то разварачиваем компонент
